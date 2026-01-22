@@ -30,7 +30,6 @@ public class Livre implements Serializable {
 
     @NotNull
     @Size(min = 10, max = 13)
-    @Pattern(regexp = "^(97[89])?[0-9]{9}[0-9X]$", message = "Format ISBN invalide")
     @Column(nullable = false, unique = true, length = 13)
     private String isbn;
 
@@ -68,8 +67,6 @@ public class Livre implements Serializable {
 
     @LastModifiedDate
     private LocalDateTime dateModification;
-
-    /* =================== CALLBACKS =================== */
     @PrePersist
     protected void onCreate() {
         if (exemplairesDisponibles == null) exemplairesDisponibles = exemplairesTotal;
@@ -92,7 +89,6 @@ public class Livre implements Serializable {
         }
     }
 
-    /* =================== MÉTIER =================== */
     public boolean estDisponible() {
         return exemplairesDisponibles != null && exemplairesDisponibles > 0 &&
             statut == StatutLivre.DISPONIBLE;
@@ -110,8 +106,6 @@ public class Livre implements Serializable {
         exemplairesDisponibles++;
         statut = StatutLivre.DISPONIBLE;
     }
-
-    /* =================== GETTERS / SETTERS =================== */
     public Long getId() { return id; }
     public String getTitre() { return titre; }
     public String getIsbn() { return isbn; }
@@ -137,8 +131,6 @@ public class Livre implements Serializable {
     public void setEmprunts(Set<Emprunt> emprunts) { this.emprunts = emprunts; }
     public void setDateCreation(LocalDateTime dateCreation) { this.dateCreation = dateCreation; }
     public void setDateModification(LocalDateTime dateModification) { this.dateModification = dateModification; }
-
-    /* =================== EQUALS / HASHCODE =================== */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -44,11 +44,6 @@ public class Emprunt {
     @Column(nullable = false)
     private LocalDateTime dateModification;
 
-    /* =================== MÉTHODES MÉTIER =================== */
-
-    /**
-     * Retourne le livre et met à jour le statut
-     */
     public void retourner() {
         if (statut != StatutEmprunt.ACTIF) {
             throw new IllegalStateException(
@@ -63,25 +58,14 @@ public class Emprunt {
         }
     }
 
-    /**
-     * Vérifie si l'emprunt est en retard
-     * @return true si dateRetourEffective non renseignée et dateRetourPrevue dépassée
-     */
     public boolean estEnRetard() {
         return dateRetourEffective == null && LocalDate.now().isAfter(dateRetourPrevue);
     }
 
-    /**
-     * Calcule le nombre de jours de retard
-     * @return nombre de jours de retard (0 si pas en retard)
-     */
     public long getJoursRetard() {
         if (!estEnRetard()) return 0;
         return ChronoUnit.DAYS.between(dateRetourPrevue, LocalDate.now());
     }
-
-    /* =================== GETTERS / SETTERS =================== */
-
     public Long getId() { return id; }
     public Utilisateur getUtilisateur() { return utilisateur; }
     public Livre getLivre() { return livre; }
@@ -104,8 +88,6 @@ public class Emprunt {
     public void setDateCreation(LocalDateTime dateCreation) { this.dateCreation = dateCreation; }
     public void setDateModification(LocalDateTime dateModification) { this.dateModification = dateModification; }
 
-    /* =================== CALLBACKS =================== */
-
     @PrePersist
     protected void onCreate() {
         dateCreation = LocalDateTime.now();
@@ -116,8 +98,6 @@ public class Emprunt {
     protected void onUpdate() {
         dateModification = LocalDateTime.now();
     }
-
-    /* =================== EQUALS / HASHCODE =================== */
 
     @Override
     public boolean equals(Object o) {
@@ -131,8 +111,6 @@ public class Emprunt {
     public int hashCode() {
         return getClass().hashCode();
     }
-
-    /* =================== TO STRING =================== */
 
     @Override
     public String toString() {

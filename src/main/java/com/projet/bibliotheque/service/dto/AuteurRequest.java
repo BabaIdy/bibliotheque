@@ -8,12 +8,10 @@ public class AuteurRequest {
 
     @NotBlank(message = "Le prénom est obligatoire")
     @Size(min = 2, max = 100, message = "Le prénom doit contenir entre 2 et 100 caractères")
-   // @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\s'-]+$", message = "Le prénom ne doit contenir que des lettres")
     private String prenom;
 
     @NotBlank(message = "Le nom est obligatoire")
     @Size(min = 2, max = 100, message = "Le nom doit contenir entre 2 et 100 caractères")
-    //@Pattern(regexp = "^[a-zA-ZÀ-ÿ\\s'-]+$", message = "Le nom ne doit contenir que des lettres")
     private String nom;
 
     @NotNull(message = "La date de naissance est obligatoire")

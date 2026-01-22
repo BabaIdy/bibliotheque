@@ -11,13 +11,11 @@ public class UtilisateurRequest {
 
     @NotBlank(message = "Le nom est obligatoire")
     @Size(min = 2, max = 100, message = "Le nom doit contenir entre 2 et 100 caractères")
-    @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\s'-]+$", message = "Le nom ne doit contenir que des lettres")
     private String nom;
 
     @NotBlank(message = "Le prénom est obligatoire")
     @Size(min = 2, max = 100, message = "Le prénom doit contenir entre 2 et 100 caractères")
-    @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\s'-]+$", message = "Le prénom ne doit contenir que des lettres")
-    private String prenom;
+     private String prenom;
 
     @NotNull(message = "Le rôle est obligatoire")
     private String role; // ETUDIANT, BIBLIOTHECAIRE, ADMINISTRATEUR

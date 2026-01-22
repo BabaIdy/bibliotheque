@@ -23,7 +23,6 @@ class CategorieServiceTest {
 
     @InjectMocks
     private CategorieService categorieService;
-    // creerCategorie
 
     @Test
     void creerCategorie_devrait_creer_une_categorie_si_nom_unique() {

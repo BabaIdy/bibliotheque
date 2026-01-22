@@ -10,8 +10,7 @@ public class LivreRequest {
     private String titre;
 
     @NotBlank(message = "L'ISBN est obligatoire")
-    @Pattern(regexp = "^(97[89])?[0-9]{9}[0-9X]$", message = "Format ISBN invalide (10 ou 13 chiffres)")
-    private String isbn;
+     private String isbn;
 
     @NotNull(message = "L'année de publication est obligatoire")
     @Min(value = 1000, message = "L'année doit être supérieure à 1000")

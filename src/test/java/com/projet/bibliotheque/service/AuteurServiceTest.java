@@ -159,7 +159,7 @@ class AuteurServiceTest {
         Auteur auteur = new Auteur();
         auteur.setId(1L);
 
-        Livre livre = new Livre(); // vrai objet Livre
+        Livre livre = new Livre();
         livre.setId(1L);
         auteur.setLivres(List.of(livre));
 

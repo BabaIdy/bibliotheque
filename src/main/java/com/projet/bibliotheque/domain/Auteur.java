@@ -19,12 +19,10 @@ public class Auteur implements Serializable {
 
     @NotBlank
     @Size(min = 2, max = 100)
-   // @Pattern(regexp = "^[a-zA-ZÀ-ÿ\\s'-]+$")
     private String prenom;
 
     @NotBlank
     @Size(min = 2, max = 100)
-    //@Pattern(regexp = "^[a-zA-ZÀ-ÿ\\s'-]+$")
     private String nom;
 
     @NotNull
@@ -49,8 +47,6 @@ public class Auteur implements Serializable {
     @Column(nullable = false)
     private LocalDateTime dateModification;
 
-    /* =================== CALLBACKS =================== */
-
     @PrePersist
     protected void onCreate() {
         dateCreation = LocalDateTime.now();
@@ -68,8 +64,6 @@ public class Auteur implements Serializable {
         prenom = prenom.trim();
         nom = nom.trim();
     }
-
-    /* =================== MÉTIER =================== */
 
     public void ajouterLivre(Livre livre) {
         livres.add(livre);
